@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>WiFi adapter for older DSLRs</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+<div class="section-head container">
+  <h1>Cheap WiFi adapter for older cameras</h1>
+
+  <p>
+    DIY WiFi adapter for <a href="https://dslrdashboard.info/introduction/"
+      >qDslrDashboard app</a> (supports Nikon, Canon and Sony
+    cameras).<br>
+    The app works on Android, iOS, Mac, Windows and Linux and provides:
+  </p>
+  <ul>
+    <li>remote live view,</li>
+    <li>shutter release,</li>
+    <li>focus stacking,</li>
+    <li>interval timer,</li>
+    <li>day-to-night timelapse tools,</li>
+    <li>and more.</li>
+  </ul>
+  <p>
+    See <a href="https://dslrdashboard.info/introduction/"
+      >qDslrDashboard's website</a> for all features and documentation.
+  </p>
+</div>
+
+<div class="section-highlights">
+  <div class="row container">
+    <div class="one-third column">
+      <img src="img/hardware.jpg">
+      <h3>Hardware</h3>
+      <p><span class="line">Tiny Raspberry Pi computer</span>
+      <span class="line">+ powerbank battery<span></p>
+    </div>
+    <div class="one-third column">
+      <img src="img/software.jpg">
+      <h3>Software</h3>
+      <p>Ready-to-run software for the Raspberry&nbsp;Pi</p>
+    </div>
+    <div class="one-third column">
+      <img src="img/remote.jpg">
+      <h3>Remote Control</h3>
+      <p><a href="https://dslrdashboard.info/introduction/"
+          >qDslrDashboard</a> app for controlling the camera
+        with your smartphone.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<a id="parts"></a> 
+<h2>What do I need to buy?</h2>
+  <img class="u-full-width" src="img/parts.jpg">
+
+  <table class="parts">
+    <thead><tr><th>Part</th><th>Price</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="line">a Raspberry Pi Zero W</span class="line">
+          <span class="line">(the "W" means WiFi)</span></td>
+        <td>$10-15</td>
+      </tr><tr>
+        <td>a small case for the Raspberry Pi</td><td>$5</td>
+      </tr><tr>
+        <td>a 4 GB microSD card, doesn't have to be fast</td><td>$4</td>
+      </tr><tr>
+        <td>a USB OTG adapter cable</td><td>$3</td>
+      </tr><tr>
+        <td><span class="line">a small size powerbank</span>
+          <span class="line">(3000-4000mAh for normal use, 8000mAh or more for heavy use)</span></td>
+        <td>$5-10</td>
+      </tr><tr>
+        <td><span class="line">a USB cable for your camera</span>
+          <span class="line">(should come in the box)</span></td><td>—</td>
+      </tr><tr>
+        <td>the qDslrDashboard app</td><td>$10</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    The prices are going to differ between countries but the total cost should
+    be around $50, unless you opt for a bigger and more expensive battery.
+  </p>
+
+  <p>
+    For preparing the microSD card you will also need access to:
+  </p>
+  <ul>
+    <li>a PC or Mac (with 500MB free disk space, temporarily),
+    <li>a microSD card reader (or an SD card reader and an adapter),
+    <li>Internet access to download a 500MB large file.
+  </ul>
+
+<a id="assembly-short"></a>  
+<h2>Putting it all together - TL;DR</h2>
+  <p>
+    In short, you need to do four simple things:
+  </p>
+  <ol>
+    <li>Download the preconfigured software and put it on a microSD card.
+    <li>Install the Raspberry Pi in its case and insert the microSD card in the
+    slot.
+    <li>Attach cables to the Raspberry Pi: powerbank to the power port and the
+    OTG to the USB port, your camera cable to the OTG adapter,
+    <li>Buy and install qDslrDashboard (ControlMyCamera if you're using iOS) on
+    your phone or tablet.
+  </ol>
+
+  <p>
+    The Raspberry Pi creates its own WiFi network
+    (<b>CameraWifi</b> with password: <b>CameraControl</b>).<br>
+    Each time it starts you need to connect your mobile device to this
+    network, start qDslrDashboard and connect to the camera.
+  </p>
+
+<a id="assembly"></a>  
+<h2>Putting it all together - step by step</h2>
+
+  <h4>Prepare a microSD card for Raspberry Pi</h4>
+  <img id="etcher" src="img/etcher.gif" width="600">
+  <ol>
+    <li>Download the SD card image file.
+    <li>Download and install
+      <a href="https://www.balena.io/etcher/" target="_blank">balenaEtcher</a>
+      app on your computer.
+    <li>Use <b>balenaEtcher</b> to write the system image to your SD card:
+      <ol>
+        <li>Open <b>balenaEtcher</b>.
+        <li>Drag the downloaded <code>camera-wifi.zip</code> file to the
+        <b>Select image</b> area of the app (it can automatically unzip the file).
+        <li>Insert a microSD card to your computer's card reader.
+        <li>Click "Flash" to write the image to the card.
+          <i>All data on the card will be deleted.</i>
+      </ol>
+      </li>
+  </ol>
+
+  <h4>Assemble the parts</h4>
+  <img id="connections" src="img/connections.jpg">
+  <ol>
+    <li>Insert the microSD card in the Raspberry Pi's card slot.
+    <li>Put the Raspberry Pi in its case.
+    <li>Attach cables:
+    <ol>
+      <li>OTG cable goes to the USB port on the Raspberry (to the left on the photo above),
+      <li>Camera USB cable connects the OTG cable and the camera,
+      <li>Power USB cable connects to the PWR port on the Raspberry and the
+      powerbank.
+    </ol>
+    </li>
+    <li>Attach the Raspberry Pi to the powerbank with some tape or velcro.
+  </ol>
+
+  <h4>Buy and install qDslrDashboard</h4>
+  <dl class="app_install">
+    <dt>Android</dt><dd>search for qDslrDashboard in the Play Store</dd>
+    <dt>iOS</dt><dd>search for ControlMyCamera in the Apple Store</dd>
+    <dt>laptops</dt><dd>there are <a href="https://dslrdashboard.info/downloads/"
+      target="_blank">download links</a> on the app's website</dd>
+  </dl>
+  <p>
+   <b>Disclaimer:</b> I'm not the author of qDslrDashboard and I'm in no way
+   affiliated with the app's author. I just think it provides a great way to
+   add WiFi to older cameras and I've created this guide to help other users.
+  </p>
+
+<a id="usage"></a>
+<h2>How to use it</h2>
+  <p>
+    There is no power button on the Raspberry, connecting the powerbank cable
+    works as a power switch.
+  </p>
+  <ol>
+    <li>Attach the Rasbperry Pi to your camera with the OTG and USB cable.
+    <li>Attach the Raspberry Pi to the powerbank to start it. Give it <b>20-30s</b>
+    to start.
+    <li>Open WiFi settings on your smartphone and connect to the WiFi of the
+    Raspberry Pi:<br>
+    Network: <b>CameraWiFi</b><br>
+    Password: <b>CameraControl</b>.
+    </li>
+    <li>
+    Start the qDslrDashboard app (ControlMyCamera on iOS) and tap the
+    <b>Network button</b> (regardless of your camera brand).<br>
+    <img src="img/connect.png" id="connect-icon">
+    <li>The app should automatically connect to the camera within 5s.
+  </ol>
+
+  <p><b>Have fun!</b></p>
+  <p>(the instructions above also work if you're running qDslrDashboard on a laptop)</p>
+
+<a id="cleanup"></a>  
+<h2>Cleanup</h2>
+<p>Now that you've tested that everything works you can delete the downloaded
+<code>camera-wifi.zip</code> file.</p>
+
+</div>
+
+<div class="section-footer">
+  <div class="container">
+    <p class="u-pull-right">2019</p>
+    <p><a href="mailto:marcin@studio4plus.com">marcin@studio4plus.com</a></p>
+</div>
+</div>
+</body>  
+</html>
